@@ -31,10 +31,12 @@ find_package(HIP QUIET REQUIRED)
 # Compile HIP kernels into static libraries
 # Library with CXX11 ABI
 add_library(horovod_hip_kernels STATIC hip_kernels.cu)
+set_target_properties(horovod_hip_kernels PROPERTIES LINKER_LANGUAGE CXX)
 target_compile_options(horovod_hip_kernels PRIVATE ${HIP_HIPCC_FLAGS})
 target_compile_definitions(horovod_hip_kernels PRIVATE _GLIBCXX_USE_CXX11_ABI=1)
 
 # Library compatible with older ABI
 add_library(compatible_horovod_hip_kernels STATIC hip_kernels.cu)
+set_target_properties(compatible_horovod_hip_kernels PROPERTIES LINKER_LANGUAGE CXX)
 target_compile_options(compatible_horovod_hip_kernels PRIVATE ${HIP_HIPCC_FLAGS})
 target_compile_definitions(compatible_horovod_hip_kernels PRIVATE _GLIBCXX_USE_CXX11_ABI=0)
