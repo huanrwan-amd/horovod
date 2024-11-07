@@ -16,6 +16,7 @@ endif()
 
 # Add ROCm-related paths
 list(APPEND CMAKE_PREFIX_PATH "${HIP_PATH}/hip" "${HIP_PATH}")
+include_directories("${ROCM_PATH}/include")
 set(HIP_CLANG_PATH "${ROCM_PATH}/llvm/bin")
 set(CMAKE_MODULE_PATH "${HIP_PATH}/cmake" ${CMAKE_MODULE_PATH})
 
